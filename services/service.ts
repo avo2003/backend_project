@@ -1,9 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const Post = require('../model/post');
 
 class PostsService {
-  async get() {
+  async get(postId:string) {
     console.log(2323);
-    const posts = await Post.find();
+    const posts = await Post.find(postId).populate('mobiles');
 
     return posts;
   }
@@ -19,7 +20,7 @@ class PostsService {
   }
 
   async getById(postId: string) {
-    const getById = await Post.findById( postId);
+    const getById = await Post.findById(postId).populate('mobiles');
 
     return getById;
   }
